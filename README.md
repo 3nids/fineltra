@@ -99,3 +99,15 @@ function. Example of creating such an index:
 ```sql
 CREATE INDEX ON chenyx06_triangles USING GiST (geom_lv03);
 ```
+
+ISSUES
+======
+
+When using `ST_Fineltra`, if you cannot load the extension and get the following error:
+
+```sql
+ERROR: could not load library "/usr/lib/postgresql/9.5/lib/fineltra-0.0.so": /usr/lib/postgresql/9.5/lib/fineltra-0.0.so: undefined symbol: geod_polygon_addpoint
+```
+
+Try to use the dynamicaly linked liblwgeom with: `./configure --with-liblwgeom=/usr/lib/liblwgeom.so`
+
